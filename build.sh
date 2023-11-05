@@ -5,9 +5,7 @@ set -o errexit
 . function.sh
 
 YUM=dnf
-RELEASEVER=${RELEASEVER:-9}
-# MIRROR_URL=https://mirrors.tuna.tsinghua.edu.cn/centos/8-stream
-MIRROR_URL=https://mirrors.aliyun.com/centos-stream/9-stream
+RELEASEVER=${RELEASEVER:-8}
 arch=${ARCH:-$(uname -m)}
 MIRROR_URL=http://dl.rockylinux.org/pub/rocky/
 
@@ -18,8 +16,8 @@ if [[ -e $rootfs ]]; then
   rm -rf $rootfs
 fi
 
-key_rpm=rocky-gpg-keys-9.2-1.6.el9.noarch.rpm
-repo_rpm=rocky-repos-9.2-1.6.el9.noarch.rpm
+key_rpm=rocky-gpg-keys-8.8-1.8.el8.noarch.rpm
+repo_rpm=rocky-repos-8.8-1.8.el8.noarch.rpm
 
 base_url=${MIRROR_URL}/$RELEASEVER/BaseOS/${arch}/os/Packages/r/
 
@@ -32,7 +30,7 @@ rpm --root $rootfs --initdb
 rpm --nodeps --root $rootfs -ivh $repo_rpm
 rpm --nodeps --root $rootfs -ivh $key_rpm
 
-rpm --root $rootfs --import  $rootfs/etc/pki/rpm-gpg/RPM-GPG-KEY-Rocky-9
+rpm --root $rootfs --import  $rootfs/etc/pki/rpm-gpg/RPM-GPG-KEY-rockyofficial
 
 $YUM --forcearch $arch -y --releasever $RELEASEVER --installroot=$rootfs --setopt=tsflags='nodocs' \
     --setopt=install_weak_deps=False \

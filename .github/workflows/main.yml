@@ -49,5 +49,5 @@ jobs:
         env:
           DOCKERU: ${{ secrets.DOCKERU }}
           DOCKERP: ${{ secrets.DOCKERP }}
-          IMAGE_TAG: 9
+          IMAGE_TAG: 8
           IMAGE_NAME: opstool/rockylinux
