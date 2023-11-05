@@ -9,7 +9,7 @@ RELEASEVER=${RELEASEVER:-9}
 # MIRROR_URL=https://mirrors.tuna.tsinghua.edu.cn/centos/8-stream
 MIRROR_URL=https://mirrors.aliyun.com/centos-stream/9-stream
 arch=${ARCH:-$(uname -m)}
-MIRROR_URL=http://dl.rockylinux.org/pub/rocky/$RELEASEVER/BaseOS/$arch/os/
+MIRROR_URL=http://dl.rockylinux.org/pub/rocky/
 
 install_wget
 
@@ -21,7 +21,7 @@ fi
 key_rpm=rocky-gpg-keys-9.2-1.6.el9.noarch.rpm
 repo_rpm=rocky-repos-9.2-1.6.el9.noarch.rpm
 
-base_url=${MIRROR_URL}/BaseOS/${arch}/os/Packages/r/
+base_url=${MIRROR_URL}/$RELEASEVER/BaseOS/${arch}/os/Packages/r/
 
 wget $base_url/$repo_rpm
 wget $base_url/$key_rpm
