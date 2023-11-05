@@ -40,7 +40,7 @@ echo "tsflags=nodocs" >> $rootfs/etc/dnf/dnf.conf
 cp /etc/resolv.conf $rootfs/etc/resolv.conf
 
 chroot $rootfs /bin/bash <<EOF
-dnf --forcearch $arch -y --releasever $RELEASEVER install yum
+dnf --forcearch $arch -y --releasever $RELEASEVER install yum glibc-minimal-langpack langpacks-en glibc-langpack-en
 dnf clean all
 EOF
 
