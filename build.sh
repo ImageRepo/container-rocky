@@ -42,6 +42,7 @@ echo "tsflags=nodocs" >> $rootfs/etc/dnf/dnf.conf
 cp /etc/resolv.conf $rootfs/etc/resolv.conf
 
 chroot $rootfs /bin/bash <<EOF
+dnf --forcearch $arch -y --releasever $RELEASEVER install yum
 dnf clean all
 EOF
 
